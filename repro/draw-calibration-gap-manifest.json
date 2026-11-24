@@ -1,0 +1,41 @@
+{
+ "term": "DCG",
+ "version": "1.0",
+ "definition_sha256": "8fe8c2cb0005e7aa3ff41eb175797800bf6f3da66408c36de89722c1f793ceb4",
+ "source": "football-data.co.uk 2023-24 CSVs (mmz4281/2324), Bet365 closing 1X2",
+ "extraction": "per row: B365H/B365D/B365A closing odds; proportional de-vig p_draw = (1/B365D) / (1/B365H + 1/B365D + 1/B365A); realized = 1 if FTR == 'D' else 0. Rows skipped only if any B365 odd missing/unparseable.",
+ "leagues": [
+  {
+   "league": "EPL",
+   "file": "E0.csv",
+   "rows_in_file": 380,
+   "rows_used": 380,
+   "rows_skipped": 0,
+   "row_digest_sha256": "3def158b0760d0f50c831c0f81145d6d59521ac71b426b81457221b674340840",
+   "first_match": "11/08/2023",
+   "last_match": "19/05/2024"
+  },
+  {
+   "league": "Serie A",
+   "file": "I1.csv",
+   "rows_in_file": 380,
+   "rows_used": 380,
+   "rows_skipped": 0,
+   "row_digest_sha256": "ececd2c561a47f777b134c20d409f5bf10a831566ee1c0690fa1a391ea3340de",
+   "first_match": "19/08/2023",
+   "last_match": "02/06/2024"
+  },
+  {
+   "league": "La Liga",
+   "file": "SP1.csv",
+   "rows_in_file": 380,
+   "rows_used": 380,
+   "rows_skipped": 0,
+   "row_digest_sha256": "b9cee424ca4b7e408849c3882fb648b968aeca4449a345179d03516e1b52e90e",
+   "first_match": "11/08/2023",
+   "last_match": "26/05/2024"
+  }
+ ],
+ "combined_row_digest_sha256": "39337541e8a35dbcb8335ab2a738794a4da44f10c3e90615b4cf59afe14437ce",
+ "known_bad_row_test": "Take the manifest rows, flip exactly one row's FTR (D->H) or swap its de-vig method to power, recompute mean_assigned, realized, dcg_pp and paired_se_pp from the manifest; the rerun must produce different numbers and reject the manifest as inconsistent with the frozen fixture table."
+}
